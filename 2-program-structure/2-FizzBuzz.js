@@ -2,16 +2,10 @@ const expected = '1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\
 
 function fizzBuzz() {
     let output = '';
-    for (let index = 1; index < 101; index++) {
-        if (index % 3 === 0) {
-            output += 'Fizz';
-        }
-        if (index % 5 === 0) {
-            output += 'Buzz';
-        }
-        if (!(index % 3 === 0) && !(index % 5 === 0)) {
-            output += index;
-        }
+    for (let index = 1; index <= 100; index++) {
+        if (index % 3 === 0) output += 'Fizz';
+        if (index % 5 === 0) output += 'Buzz';
+        if (index % 3 !== 0 && index % 5 !== 0) output += index;
         output += '\n'
     }
     return output;
@@ -19,7 +13,7 @@ function fizzBuzz() {
 
 function test() {
     const result = fizzBuzz();
-    expected === result ? console.info('✅') : console.error('❌');
+    expected === result ? console.info('FizzBuzz is ✅') : console.error('FizzBuzz is ❌');
 }
 
 test();
