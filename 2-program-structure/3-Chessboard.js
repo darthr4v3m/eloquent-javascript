@@ -2,8 +2,12 @@ function chessboard(size = 8) {
     let output = "";
     for (let row = 1; row <= size; row++) {
         for (let column = 1; column <= size; column++) {
-            column % 2 ? output += " " : output += "#";
-            if (column % 8 === 0) {
+            if ((row + column) % 2 === 0) {
+                output += " ";
+            } else {
+                output += "#";
+            }
+            if (column % size === 0) {
                 output += "\n";
             }
         }
