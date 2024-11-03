@@ -51,3 +51,40 @@ function testSum() {
 }
 
 testSum();
+
+/*
+As a bonus assignment, 
+modify your range function to take an optional third argument 
+that indicates the “step” value used when building the array. 
+If no step is given, 
+the elements should go up by increments of one, corresponding to the old behavior. 
+The function call range(1, 10, 2) should return [1, 3, 5, 7, 9]. 
+Make sure this also works with negative step values so that range(5, 2, -1) produces [5, 4, 3, 2].
+*/
+
+function rangeWithStep(start, end, step) {
+    const _step = step ?? 1;
+    output = [start];
+    for (let index = start; index < end; index++) {
+        const next = output[output.length - 1] + _step;
+        if (next > end) {
+            return output;
+        }
+        output.push(next);
+    }
+    return output;
+}
+
+function testRangeWithStep() {
+    console.assert(compare(rangeWithStep(1, 3), [1, 2, 3]), "❌ [1, 2, 3]");
+    console.assert(compare(rangeWithStep(-4, 4), [-4, -3, -2, -1, 0, 1, 2, 3, 4]), "❌ [-4, -3, -2, -1, 0, 1, 2, 3, 4]");
+    console.assert(compare(rangeWithStep(0, 0), [0]), "❌ [0]");
+
+    console.assert(compare(rangeWithStep(0, 0, 2), [0]), "❌ [0]");
+    console.assert(compare(rangeWithStep(0, 2, 2), [0, 2]), "❌ [0, 2]");
+    console.assert(compare(rangeWithStep(0, 2, 3), [0]), "❌ [0]");
+
+    console.assert(compare(rangeWithStep(1, 10, 2), [1, 3, 5, 7, 9]), "❌ [1, 3, 5, 7, 9]");
+}
+
+testRangeWithStep();
