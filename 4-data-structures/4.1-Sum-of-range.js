@@ -63,14 +63,26 @@ Make sure this also works with negative step values so that range(5, 2, -1) prod
 */
 
 function rangeWithStep(start, end, step) {
+    console.log('rangeWithStep with params', start, end, step);
     const _step = step ?? 1;
     output = [start];
-    for (let index = start; index < end; index++) {
-        const next = output[output.length - 1] + _step;
-        if (next > end) {
-            return output;
+    if (_step > 0) {
+        while (output[output.length - 1] + _step <= end) {
+            const next = output[output.length - 1] + _step;
+            if (next > end) {
+                return output;
+            }
+            output.push(next);
         }
-        output.push(next);
+    }
+    if (step < 0) {
+        while (output[output.length - 1] + _step >= end) {
+            const next = output[output.length - 1] + _step;
+            if (next < end) {
+                return output;
+            }
+            output.push(next);
+        }
     }
     return output;
 }
@@ -85,6 +97,8 @@ function testRangeWithStep() {
     console.assert(compare(rangeWithStep(0, 2, 3), [0]), "❌ [0]");
 
     console.assert(compare(rangeWithStep(1, 10, 2), [1, 3, 5, 7, 9]), "❌ [1, 3, 5, 7, 9]");
+
+    console.assert(compare(rangeWithStep(5, 2, -1), [5, 4, 3, 2]), "❌ [5, 4, 3, 2]");
 }
 
 testRangeWithStep();
