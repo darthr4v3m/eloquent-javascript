@@ -1,6 +1,6 @@
 /********** Test utility **********/
 
-function compare(array_1, array_2) {
+function areEqual(array_1, array_2) {
     if (array_1.length !== array_2.length) return false;
 
     return array_1.every((element, index) => {
@@ -57,17 +57,17 @@ function sum(array) {
 /********** Tests **********/
 
 function testRange() {
-    console.assert(compare(range(1, 3), [1, 2, 3]), "❌ [1, 2, 3]");
-    console.assert(compare(range(-4, 4), [-4, -3, -2, -1, 0, 1, 2, 3, 4]), "❌ [-4, -3, -2, -1, 0, 1, 2, 3, 4]");
-    console.assert(compare(range(0, 0), [0]), "❌ [0]");
+    console.assert(areEqual(range(1, 3), [1, 2, 3]), "❌ [1, 2, 3]");
+    console.assert(areEqual(range(-4, 4), [-4, -3, -2, -1, 0, 1, 2, 3, 4]), "❌ [-4, -3, -2, -1, 0, 1, 2, 3, 4]");
+    console.assert(areEqual(range(0, 0), [0]), "❌ [0]");
 
-    console.assert(compare(range(0, 0, 2), [0]), "❌ [0]");
-    console.assert(compare(range(0, 2, 2), [0, 2]), "❌ [0, 2]");
-    console.assert(compare(range(0, 2, 3), [0]), "❌ [0]");
+    console.assert(areEqual(range(0, 0, 2), [0]), "❌ [0]");
+    console.assert(areEqual(range(0, 2, 2), [0, 2]), "❌ [0, 2]");
+    console.assert(areEqual(range(0, 2, 3), [0]), "❌ [0]");
 
-    console.assert(compare(range(1, 10, 2), [1, 3, 5, 7, 9]), "❌ [1, 3, 5, 7, 9]");
+    console.assert(areEqual(range(1, 10, 2), [1, 3, 5, 7, 9]), "❌ [1, 3, 5, 7, 9]");
 
-    console.assert(compare(range(5, 2, -1), [5, 4, 3, 2]), "❌ [5, 4, 3, 2]");
+    console.assert(areEqual(range(5, 2, -1), [5, 4, 3, 2]), "❌ [5, 4, 3, 2]");
 }
 
 testRange();
